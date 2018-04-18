@@ -1,7 +1,10 @@
 $('document').ready(function() {
 
 //variable for button array
-var topics = ["seinfeld", "hulk", "superman", "spiderman"];
+var topics = ["seinfeld", "hulk", "superman", "spiderman", "wonder woman", "batman", "homer simpson", "david bowie", "spongebob"];
+
+//varible for the number of gifs to be generated on the page
+var numOfGifs;
 
 // Function for displaying topic data
 function renderButtons() {
@@ -34,8 +37,10 @@ function renderButtons() {
 
     $('#gifs').empty();
 
+    numOfGifs = $('#num-gifs').val();
+
     var topicName = $(this).attr('data-name');
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=TD5DD5FpNQaQM8C35D9FYruO53q1tXwm&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=TD5DD5FpNQaQM8C35D9FYruO53q1tXwm&limit=" + numOfGifs;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -47,21 +52,26 @@ function renderButtons() {
         //loop through the array results
         for (var i = 0; i < results.length; i++) {
           //create a virtual div for holding the GIF
-          var gifDiv = $("<div>");
+          var gifDiv = $("<div class='img-gif-div'>");
           //get the rating
-          // var rating = results[i].rating;
-          //create a virtual p for the rating
-          // var p = $("<p>").text("Rating: " + rating);
+          var rating = results[i].rating;
+          // create a virtual p for the rating
+          var ratingParagraph = $("<p>").text("Rating: " + rating);
           //create a virtual image for the GIF itself
           var topicImage = $("<img>");
-          topicImage.addClass('topic-image');
+          topicImage.addClass('topic-image img-fluid');
           topicImage.attr("src", results[i].images.fixed_height_small_still.url);
           topicImage.attr("data-state", "still");
           topicImage.attr("data-still", results[i].images.fixed_height_small_still.url)
           topicImage.attr("data-animate", results[i].images.fixed_height_small.url);
+
+          // topicImage.attr({
+
+          // });
+
           //append the GIF then the virtual p to the div
           gifDiv.append(topicImage);
-          // gifDiv.append(p);
+          gifDiv.append(ratingParagraph);
           //display the GIF container in the DOM
           $('#gifs').append(gifDiv);
         }
@@ -96,7 +106,7 @@ function renderButtons() {
     var newTopic = $("#gif-input").val().trim();
 
     // The movie from the textbox is then added to our array
-    if(topics.includes(newTopic) === false) {
+    if(topics.includes(newTopic) === false && newTopic !== "") {
       topics.push(newTopic);
     }
     $('#gif-input').val("").focus();

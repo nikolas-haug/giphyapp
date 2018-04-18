@@ -2,6 +2,29 @@ button {
     margin: 10px;
 }
 
+button:hover {
+    transition: all, 0.5s;
+}
+
+button:focus {
+    outline: none;
+}
+
 .topic {
     border: 2px solid green;
 }
+
+/* .topic-image  p {
+    margin: 10px;
+    float: left;
+} */
+
+.img-gif-div {
+    margin: 10px;
+    float: left;
+}
+
+/* #gifs {
+    margin: 5px;
+    float: left;
+} */

@@ -30,36 +30,54 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="jumbotron">
+                <div class="jumbotron p-3">
                     <h1>giphy app</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div id="buttons-view">
+                    <!-- buttons will generate here -->
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col">
-
-                    <form id="gif-button-form">
-                        <label for="add a button">Add a new Gif button!</label>
-                        <input type="text" id="gif-input">
-                        
-                        <br>
-                    
-                        <!-- Button triggers new movie to be added -->
-                        <input id="add-gif" type="submit" value="add a new Gif">
-                    </form>
-
-                <div id="buttons-view">
-                    <!-- buttons will generate here -->
+            <div class="col-md-6">
+                <div>
+                    <h2 class="px-2">gifs</h2>
+                    <a href="assets/images/bamboo-img.jpeg" download="test-file">Download!</a>
+                    <!-- test image for download functionality -->
                 </div>
-
-                <div id="gifs">
-                    <h2>gifs</h2>
-                    <!-- gifs will generate here -->
+                <div class="row">
+                    <div class="col-md-12" id="gifs">
+                    <!-- gifs will generate here -->    
+                    </div>
                 </div>
-
+            </div>
+            <div class="col-md-6">
+                <form id="gif-button-form" class="form-group">
+                    <label for="add a button">Add a new Gif button!</label>
+                    <input type="text" id="gif-input">
+                    <!-- Button triggers new movie to be added -->
+                    <input id="add-gif" type="submit" value="add a new Gif">
+                </form>
+                <div class="form-group">
+                    <label for="numRecords">Number of Gifs to retrieve</label>
+                    <select class="form-control" id="num-gifs">
+                        <option>5</option>
+                        <option>10</option>
+                        <option selected>15</option>
+                        <option>20</option>
+                        <option>30</option>
+                    </select>
+                </div>
             </div>
         </div>
+        
     </div>
 
 
