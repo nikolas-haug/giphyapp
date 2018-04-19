@@ -1,9 +1,18 @@
+/* custom css for giphy app */
+
+body {
+    background-image: url("images/old_moon.png");
+}
+
 button {
     margin: 10px;
+    border-radius: 4px;
 }
 
 button:hover {
     transition: all, 0.5s;
+    background-color: blue;
+    text-shadow: 1.5px 0.5px #FF0000;
 }
 
 button:focus {
@@ -14,17 +23,8 @@ button:focus {
     border: 2px solid green;
 }
 
-/* .topic-image  p {
-    margin: 10px;
-    float: left;
-} */
-
 .img-gif-div {
     margin: 10px;
-    float: left;
+    /* float: left; */
+    display: inline-block;
 }
-
-/* #gifs {
-    margin: 5px;
-    float: left;
-} */

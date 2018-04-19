@@ -12,12 +12,8 @@ function renderButtons() {
     // Deleting the buttons prior to adding new topics
     // (this is necessary otherwise you will have repeat buttons)
     $("#buttons-view").empty();
-
-    // $('#movie-poster').hide();
-
     // Looping through the array of topics
     for (var i = 0; i < topics.length; i++) {
-
       // Then dynamicaly generating buttons for each topic in the array
       // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
       var btn = $("<button>");
@@ -46,9 +42,9 @@ function renderButtons() {
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        console.log(topicName);
+        // console.log(topicName);
         var results = response.data
-        console.log(results);
+        // console.log(results);
         //loop through the array results
         for (var i = 0; i < results.length; i++) {
           //create a virtual div for holding the GIF
@@ -60,13 +56,19 @@ function renderButtons() {
           //create a virtual image for the GIF itself
           var topicImage = $("<img>");
           topicImage.addClass('topic-image img-fluid');
-          topicImage.attr("src", results[i].images.fixed_height_small_still.url);
-          topicImage.attr("data-state", "still");
-          topicImage.attr("data-still", results[i].images.fixed_height_small_still.url)
-          topicImage.attr("data-animate", results[i].images.fixed_height_small.url);
+          // topicImage.attr("src", results[i].images.fixed_height_small_still.url);
+          // topicImage.attr("data-state", "still");
+          // topicImage.attr("data-still", results[i].images.fixed_height_small_still.url)
+          // topicImage.attr("data-animate", results[i].images.fixed_height_small.url);
 
           // topicImage.attr({
-
+          topicImage.attr({
+            "src": results[i].images.fixed_height_small_still.url,
+            "data-state": "still",
+            "data-still": results[i].images.fixed_height_small_still.url,
+            "data-animate": results[i].images.fixed_height_small.url
+          });
+          //remake this as a 'single' line of code
           // });
 
           //append the GIF then the virtual p to the div
@@ -78,8 +80,6 @@ function renderButtons() {
     })
 
   });
-
-
 
   //event listener for the gifs - check if still or animated
   $('#gifs').on('click', '.topic-image', function() {
@@ -101,16 +101,14 @@ function renderButtons() {
   // This function handles events where one button is clicked
   $("#add-gif").on("click", function(event) {
     event.preventDefault();
-
     // This line grabs the input from the textbox
     var newTopic = $("#gif-input").val().trim();
-
-    // The movie from the textbox is then added to our array
+    // The topic from the textbox is then added to our array
     if(topics.includes(newTopic) === false && newTopic !== "") {
       topics.push(newTopic);
     }
     $('#gif-input').val("").focus();
-    // Calling renderButtons which handles the processing of our movie array
+    //render the new button with all the other buttons on the page
     renderButtons();
 
   });
