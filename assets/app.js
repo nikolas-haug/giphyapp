@@ -31,7 +31,7 @@ function renderButtons() {
   //event listener for the individual gif buttons
   $('body').on('click', '.topic', function() {
 
-    $('#gifs').empty();
+    $('#gifs, #presentation').empty();
 
     numOfGifs = $('#num-gifs').val();
 
