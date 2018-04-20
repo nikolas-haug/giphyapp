@@ -8,77 +8,48 @@ var numOfGifs;
 
 // Function for displaying topic data
 function renderButtons() {
-
-    // Deleting the buttons prior to adding new topics
-    // (this is necessary otherwise you will have repeat buttons)
     $("#buttons-view").empty();
-    // Looping through the array of topics
     for (var i = 0; i < topics.length; i++) {
-      // Then dynamicaly generating buttons for each topic in the array
-      // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
       var btn = $("<button>");
-      // Adding a class of topic to our button
       btn.addClass("topic");
-      // Adding a data-attribute
       btn.attr("data-name", topics[i]);
-      // Providing the initial button text
       btn.text(topics[i]);
-      // Adding the button to the buttons-view div
       $("#buttons-view").append(btn);
     }
   }
 
-  //event listener for the individual gif buttons
+  //event listener for the individual gif buttons to generate new gifs in the DOM
   $('body').on('click', '.topic', function() {
-
+    //clear the heading text
     $('#gifs, #presentation').empty();
-
     numOfGifs = $('#num-gifs').val();
-
     var topicName = $(this).attr('data-name');
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=TD5DD5FpNQaQM8C35D9FYruO53q1tXwm&limit=" + numOfGifs;
+    //call the giphy API for the requested number of gifs
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
-        // console.log(topicName);
         var results = response.data
-        // console.log(results);
-        //loop through the array results
         for (var i = 0; i < results.length; i++) {
-          //create a virtual div for holding the GIF
           var gifDiv = $("<div class='img-gif-div'>");
-          //get the rating
           var rating = results[i].rating;
-          // create a virtual p for the rating
           var ratingParagraph = $("<p>").text("Rating: " + rating);
-          //create a virtual image for the GIF itself
           var topicImage = $("<img>");
           topicImage.addClass('topic-image img-fluid');
-          // topicImage.attr("src", results[i].images.fixed_height_small_still.url);
-          // topicImage.attr("data-state", "still");
-          // topicImage.attr("data-still", results[i].images.fixed_height_small_still.url)
-          // topicImage.attr("data-animate", results[i].images.fixed_height_small.url);
 
-          // topicImage.attr({
           topicImage.attr({
             "src": results[i].images.fixed_height_small_still.url,
             "data-state": "still",
             "data-still": results[i].images.fixed_height_small_still.url,
             "data-animate": results[i].images.fixed_height_small.url
           });
-          //remake this as a 'single' line of code
-          // });
-
-          //append the GIF then the virtual p to the div
+          
           gifDiv.append(topicImage);
           gifDiv.append(ratingParagraph);
-          //display the GIF container in the DOM
           $('#gifs').append(gifDiv);
         }
     })
-
   });
 
   //event listener for the gifs - check if still or animated
@@ -98,20 +69,16 @@ function renderButtons() {
     }
   });
 
-  // This function handles events where one button is clicked
+  //event listener for when a gif button is clicked
   $("#add-gif").on("click", function(event) {
     event.preventDefault();
-    // This line grabs the input from the textbox
     var newTopic = $("#gif-input").val().trim().toLowerCase();
-    
-    // The topic from the textbox is then added to our array
+  
     if(topics.includes(newTopic) === false && newTopic !== "") {
       topics.push(newTopic);
     }
     $('#gif-input').val("").focus();
-    //render the new button with all the other buttons on the page
     renderButtons();
-
   });
 
 renderButtons();
