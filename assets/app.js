@@ -102,7 +102,8 @@ function renderButtons() {
   $("#add-gif").on("click", function(event) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    var newTopic = $("#gif-input").val().trim();
+    var newTopic = $("#gif-input").val().trim().toLowerCase();
+    
     // The topic from the textbox is then added to our array
     if(topics.includes(newTopic) === false && newTopic !== "") {
       topics.push(newTopic);

@@ -27,17 +27,47 @@
 <body>
 
     <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-1">
+                        <p class="mb-0 mt-1">number of Gifs to get</p>
+                    </li>
+                    <li class="nav-item mr-1">        
+                        <select class="form-control" id="num-gifs">
+                            <option>5</option>
+                            <option>10</option>
+                            <option selected>15</option>
+                            <option>20</option>
+                            <option>30</option>
+                        </select>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input type="text" id="gif-input" class="mr-1">
+                    <!-- Button triggers new movie to be added -->
+                    <input id="add-gif" type="submit" value="add a new Gif">
+                </form>
+            </div>
+        </nav>
+    </div>
 
-        <div class="row">
+    <div class="container">
+
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="jumbotron p-3 mt-2">
                     <h1>giphy app</h1>
                     <hr>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row mb-3">
+        <div class="row mb-3 text-center">
             <div class="col">
                 <div id="buttons-view">
                     <!-- buttons will generate here -->
@@ -46,21 +76,9 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div>
-                    <h2 class="px-2">gifs</h2>
-                    <a href="assets/images/bamboo-img.jpeg" download="test-file">Download!</a>
-                    <!-- test image for download functionality -->
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center" id="gifs">
-                    <!-- gifs will generate here -->    
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-4">
                 <form id="gif-button-form" class="form-group">
-                    <label for="add a button">Add a new Gif button!</label>
+                    <!-- <label for="add a button">Add a new Gif button!</label> -->
                     <input type="text" id="gif-input">
                     <!-- Button triggers new movie to be added -->
                     <input id="add-gif" type="submit" value="add a new Gif">
@@ -76,6 +94,19 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-8">
+                <div>
+                    <h2 class="px-2">gifs</h2>
+                    <a href="assets/images/bamboo-img.jpeg" download="test-file">Download!</a>
+                    <!-- test image for download functionality -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center" id="gifs">
+                    <!-- gifs will generate here -->    
+                    </div>
+                </div>
+            </div>
+            
         </div>
         
     </div>
