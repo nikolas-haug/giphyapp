@@ -34,7 +34,7 @@ function renderButtons() {
         for (var i = 0; i < results.length; i++) {
           var gifDiv = $("<div class='img-gif-div'>");
           var rating = results[i].rating;
-          var ratingParagraph = $("<p>").text("Rating: " + rating);
+          var ratingParagraph = $("<p class='rating'>").text("Rating: " + rating);
           var topicImage = $("<img>");
           topicImage.addClass('topic-image img-fluid');
 
@@ -44,7 +44,7 @@ function renderButtons() {
             "data-still": results[i].images.fixed_height_small_still.url,
             "data-animate": results[i].images.fixed_height_small.url
           });
-          
+
           gifDiv.append(topicImage);
           gifDiv.append(ratingParagraph);
           $('#gifs').append(gifDiv);

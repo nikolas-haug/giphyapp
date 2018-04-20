@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giphy App</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+    <!-- font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!-- bootstrap javascript -->
@@ -22,23 +26,21 @@
     <script src="assets/app.js"></script>
 </head>
 
-<!-- API KEY: TD5DD5FpNQaQM8C35D9FYruO53q1tXwm -->
-
 <body>
 
     <!-- bootstrap navbar with form inputs for gif buttons -->
     <div class="container mt-2 mb-4">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Gif Maker</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-cog fa-spin"></i> Gif Maker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-2">
-                        <p class="mb-0 nav-link">How many gifs?</p>
+                        <p class="mb-0 nav-link sparkle">How many gifs?</p>
                     </li>
-                    <li class="nav-item mr-2">        
+                    <li class="nav-item mr-3 mt-2">        
                         <select class="form-control" id="num-gifs">
                             <option>5</option>
                             <option>10</option>
@@ -49,8 +51,8 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input type="text" id="gif-input" class="mr-2">
-                    <!-- Button triggers new movie to be added -->
+                    <input type="text" id="gif-input" class="mr-2" placeholder="name of gif">
+                    <!-- Button triggers new gif button to be added -->
                     <input id="add-gif" type="submit" value="make a gif button">
                 </form>
             </div>
@@ -63,13 +65,13 @@
         <div class="row mb-3 text-center">
             <div class="col">
                 <div id="buttons-view">
-                    <!-- buttons will generate here -->
+                    <!-- gif buttons will generate here -->
                 </div>
             </div>
         </div>
 
         <!-- row that displays on page load - then is hidden after gif generation -->
-        <div class="row text-center" id="presentation">
+        <div class="row text-center mt-4" id="presentation">
             <div class="col-md-12">
                 <h1>Put your gifs here!</h1>
             </div>
@@ -77,7 +79,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center" id="gifs">
-                <!-- gifs will generate her -->
+                <!-- gifs will generate here -->
             </div>
         </div>
         
