@@ -12,7 +12,7 @@ To demonstrate the full implementation of the Giphy API in a responsive, and sty
 
 ## Technologies used:
 
-* Giphy API - <https://nikolas-haug.github.io/giphyapp/>
+* Giphy API - <https://developers.giphy.com/>
 * Javascript
 * Bootstrap 4 framework
 * Font Awesome Icons
